@@ -1,7 +1,6 @@
 package com.example.mdbspringboot.controller;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,33 +13,32 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.mdbspringboot.model.User;
-import com.example.mdbspringboot.repository.UserRepository;
+import com.example.mdbspringboot.services.UserService;
 
 @Controller
 @EnableMongoRepositories
 public class UserController {
 
-	@Autowired
-	UserRepository userRepo;
+	private UserService userService;
 	
-	List<User> userList = new ArrayList<User>();
+	@Autowired
+	public UserController(UserService userService) {
+		this.userService = userService;
+	}
 
 	@GetMapping("/usuarios")
 	@ResponseBody
 	public List<User> getUsers(@RequestParam(name="id", required=false) String id) {
-		if (id != null) {
-			userList.clear();
-			userList.add(userRepo.findUserById(id));
-			return userList;
+		if (id == null) {
+			return userService.getUsers();
 		}
-		return userRepo.findAll();
+		return userService.getUserById(id);
 	}
 	
 	@PostMapping("/usuarios")
 	@ResponseBody
 	public List<User> createUser(@RequestBody User user) {
-		userRepo.save(user);
-		return userRepo.findAll();
+		return userService.createUser(user);
 	}
 	
 }
