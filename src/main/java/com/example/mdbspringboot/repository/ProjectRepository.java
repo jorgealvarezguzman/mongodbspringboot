@@ -12,7 +12,7 @@ public interface ProjectRepository extends MongoRepository<Project, String> {
 	@Query(value="{}", fields="{ 'usuarios' : 1 }")
 	List<Object> findParticipants();
 	
-	@Query(value="{'_id':?0 , 'usuario.id_usuario':?1}")
+	@Query(value="{'_id':?0 , 'usuario.id_usuario':?1}", fields="{ 'usuarios' : 1 }")
 	Project findProjectParticipant(String idProyecto, String idUsuario);
 	
 	// @Query("{id:'?0'}")

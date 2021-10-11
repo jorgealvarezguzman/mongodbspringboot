@@ -19,12 +19,12 @@ public class Project {
 	private Date f_inicial;
 	private Date f_final;
 	private String estado;
-	private List<Participant> usuarios;
+	private List<Object> usuarios;
 	private List<Object> observaciones;
 	
 	public Project() {}
 	
-	public Project(String descripcion, String obj_gen, String obj_esp, Integer presupuesto, Date f_final, List<Participant> usuarios,
+	public Project(String descripcion, String obj_gen, String obj_esp, Integer presupuesto, Date f_final, List<Object> usuarios,
 			String estado) {
 		super();
 		this.descripcion = descripcion;
@@ -37,7 +37,7 @@ public class Project {
 	}
 	
 	public Project(String descripcion, String obj_gen, String obj_esp, Integer presupuesto, Date f_inicial, Date f_final,
-			List<Participant> usuarios, String estado, List<Object> observaciones) {
+			List<Object> usuarios, String estado, List<Object> observaciones) {
 		super();
 		this.descripcion = descripcion;
 		this.obj_gen = obj_gen;
@@ -51,7 +51,7 @@ public class Project {
 	}
 	
 	public Project(String descripcion, String obj_gen, String obj_esp, Integer presupuesto, Date f_inicial, Date f_final,
-			List<Participant> usuarios) {
+			List<Object> usuarios) {
 		super();
 		this.descripcion = descripcion;
 		this.obj_gen = obj_gen;
@@ -98,10 +98,10 @@ public class Project {
 	public void setFechaFinal(Date f_final) {
 		this.f_final = f_final;
 	}
-	public List<Participant> getUsuarios() {
+	public List<Object> getUsuarios() {
 		return usuarios;
 	}
-	public void setUsuarios(List<Participant> usuarios) {
+	public void setUsuarios(List<Object> usuarios) {
 		this.usuarios = usuarios;
 	}
 	public String getEstado() {
