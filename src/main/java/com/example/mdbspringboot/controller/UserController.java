@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -41,4 +43,9 @@ public class UserController {
 		return userService.createUser(user);
 	}
 	
+	@PutMapping(path="/usuarios/{usuarioId}")
+    public User updateUser(@PathVariable("usuarioId") String id, 
+    		@RequestBody User user) {
+        return userService.updateUser(id, user);
+	}
 }
