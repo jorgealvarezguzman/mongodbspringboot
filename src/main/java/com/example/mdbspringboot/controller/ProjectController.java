@@ -2,21 +2,19 @@ package com.example.mdbspringboot.controller;
 
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-// import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.mdbspringboot.model.Participant;
 import com.example.mdbspringboot.model.Project;
+import com.example.mdbspringboot.model.User;
 import com.example.mdbspringboot.services.ProjectService;
 
 @Controller
@@ -30,24 +28,26 @@ public class ProjectController {
 		this.projectService = projectService;
 	}
 
-	@GetMapping("/participantes")
+	@GetMapping("/proyectos")
 	@ResponseBody
-	public List<Object> getParticipants() {
-		return projectService.getParticipants();
+	public List<Project> getProjects(@RequestParam(name="id", required=false) String id) {
+		if (id == null) {
+			return projectService.getProjects();
+		}
+		return projectService.getProjectById(id);
 	}
 	
 	@PostMapping("/proyectos")
 	@ResponseBody
-	public Project createProject(@RequestBody Project project) {
+	public List<Project> createProject(@RequestBody Project project) {
 		return projectService.createProject(project);
 	}
 	
-	@PatchMapping("/proyectos/{idProyecto}/participantes/{idParticipante}")
-	public Project updateParticipant(@PathVariable String idProyecto,
-			@PathVariable String idParticipante, 
-			@RequestBody Participant participant) {
-		
-		return projectService.editParticipant(idProyecto, idParticipante, participant);
+	@PostMapping("/proyectos/{idProyecto}/participantes")
+	public Project addParticipantToProject(@PathVariable("idProyecto") String idProyecto, 
+    									   @RequestBody User user) {
+		return projectService.addParticipantToProject(idProyecto, user);
 	}
+	
 	
 }
