@@ -1,7 +1,7 @@
 package com.example.mdbspringboot.model;
 
-import java.util.Date;
 import java.util.List;
+import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,30 +14,18 @@ public class Project {
 	
 	private String descripcion;
 	private String obj_gen;
-	private String obj_esp;
-	private Integer presupuesto;
+	private List<String> obj_esp;
+	private Double presupuesto;
 	private Date f_inicial;
 	private Date f_final;
 	private String estado;
 	private List<Object> usuarios;
-	private List<Object> observaciones;
+	private List<String> observaciones;
 	
 	public Project() {}
-	
-	public Project(String descripcion, String obj_gen, String obj_esp, Integer presupuesto, Date f_final, List<Object> usuarios,
-			String estado) {
-		super();
-		this.descripcion = descripcion;
-		this.obj_gen = obj_gen;
-		this.obj_esp = obj_esp;
-		this.presupuesto = presupuesto;
-		this.f_final = f_final;
-		this.usuarios = usuarios;
-		this.estado = estado;
-	}
-	
-	public Project(String descripcion, String obj_gen, String obj_esp, Integer presupuesto, Date f_inicial, Date f_final,
-			List<Object> usuarios, String estado, List<Object> observaciones) {
+
+	public Project(String descripcion, String obj_gen, List<String> obj_esp, Double presupuesto,
+			Date f_inicial, Date f_final, String estado, List<Object> usuarios, List<String> observaciones) {
 		super();
 		this.descripcion = descripcion;
 		this.obj_gen = obj_gen;
@@ -45,86 +33,89 @@ public class Project {
 		this.presupuesto = presupuesto;
 		this.f_inicial = f_inicial;
 		this.f_final = f_final;
-		this.usuarios = usuarios;
 		this.estado = estado;
+		this.usuarios = usuarios;
 		this.observaciones = observaciones;
-	}
-	
-	public Project(String descripcion, String obj_gen, String obj_esp, Integer presupuesto, Date f_inicial, Date f_final,
-			List<Object> usuarios) {
-		super();
-		this.descripcion = descripcion;
-		this.obj_gen = obj_gen;
-		this.obj_esp = obj_esp;
-		this.presupuesto = presupuesto;
-		this.f_inicial = f_inicial;
-		this.f_final = f_final;
-		this.usuarios = usuarios;
 	}
 
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getDescipcion() {
+
+	public String getDescripcion() {
 		return descripcion;
 	}
-	public void setDescipcion(String descripcion) {
+
+	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public String getObjetivoGeneral() {
+
+	public String getObj_gen() {
 		return obj_gen;
 	}
-	public void setObjetivoGeneral(String obj_gen) {
+
+	public void setObj_gen(String obj_gen) {
 		this.obj_gen = obj_gen;
 	}
-	public String getObjetivoEspecifico() {
+
+	public List<String> getObj_esp() {
 		return obj_esp;
 	}
-	public void setObjetivoEspecifico(String obj_esp) {
+
+	public void setObj_esp(List<String> obj_esp) {
 		this.obj_esp = obj_esp;
 	}
-	public Integer getPresupuesto() {
+
+	public Double getPresupuesto() {
 		return presupuesto;
 	}
-	public void setPresupuesto(Integer presupuesto) {
+
+	public void setPresupuesto(Double presupuesto) {
 		this.presupuesto = presupuesto;
 	}
-	public Date getFechaFinal() {
+
+	public Date getF_inicial() {
+		return f_inicial;
+	}
+
+	public void setF_inicial(Date f_inicial) {
+		this.f_inicial = f_inicial;
+	}
+
+	public Date getF_final() {
 		return f_final;
 	}
-	public void setFechaFinal(Date f_final) {
+
+	public void setF_final(Date f_final) {
 		this.f_final = f_final;
 	}
-	public List<Object> getUsuarios() {
-		return usuarios;
-	}
-	public void setUsuarios(List<Object> usuarios) {
-		this.usuarios = usuarios;
-	}
+
 	public String getEstado() {
 		return estado;
 	}
+
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 
-	public Date getFechaInicial() {
-		return f_inicial;
+	public List<Object> getUsuarios() {
+		return usuarios;
 	}
 
-	public void setFechaInicial(Date f_inicial) {
-		this.f_inicial = f_inicial;
-	}	
+	public void setUsuarios(List<Object> usuarios) {
+		this.usuarios = usuarios;
+	}
 
-	public List<Object> getObservaciones() {
+	public List<String> getObservaciones() {
 		return observaciones;
 	}
 
-	public void setObservaciones(List<Object> observaciones) {
+	public void setObservaciones(List<String> observaciones) {
 		this.observaciones = observaciones;
-	}	
+	}
+	
 }
-

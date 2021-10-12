@@ -35,22 +35,4 @@ public class UserService {
 		userRepo.save(user);
 		return userRepo.findAll();
 	}
-	
-	public User updateUser(String usuarioId, User usuario) {
-        User usuarioEncontrado = userRepo.findById(usuarioId)
-                .orElseThrow(() -> new IllegalStateException(
-                        "Usuario con id " + usuarioId + " no existe"
-                ));
-        
-        usuarioEncontrado.setNombre(usuario.getNombre());
-        usuarioEncontrado.setEmail(usuario.getEmail());
-        usuarioEncontrado.setPassword(usuario.getPassword());
-        usuarioEncontrado.setCelular(usuario.getCelular());
-        usuarioEncontrado.setCarrera(usuario.getCarrera());
-        usuarioEncontrado.setRol(usuario.getRol());
-        usuarioEncontrado.setProyectos(usuario.getProyectos());
-        
-        userRepo.save(usuarioEncontrado);
-        return usuarioEncontrado;
-    }
 }

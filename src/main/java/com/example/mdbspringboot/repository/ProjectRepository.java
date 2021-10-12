@@ -9,16 +9,16 @@ import com.example.mdbspringboot.model.Project;
 
 public interface ProjectRepository extends MongoRepository<Project, String> {
 	
-	@Query(value="{}", fields="{ 'usuarios' : 1 }")
-	List<Object> findParticipants();
+	/*
+	 * @Query("{nombre:'?0'}") Project findProjectByName(String nombre);
+	 */
 	
-	@Query(value="{'_id':?0 , 'usuario.id_usuario':?1}", fields="{ 'usuarios' : 1 }")
-	Project findProjectParticipant(String idProyecto, String idUsuario);
-	
-	// @Query("{id:'?0'}")
-	// Project findProjectById(String id);
+	@Query("{id:'?0'}")
+	Project findProjectById(String id);
 	
 	List<Project> findAll();
+	    
+	//void updateProjectUsers(String id, List<Object> newusuarios);
 	
 	public long count();
 
